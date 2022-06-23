@@ -13,12 +13,13 @@ jobs:
     env:
      JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
     steps:
-    - name: set output value
+    - name: mask value
       id: first
       shell: bash
       run:
         first_value="this is the first output value!"
 
+        echo "::add-mask::$first_value"
         echo "::set-output name=my_first_value::$first_value" # output
 
     - name: get output value
