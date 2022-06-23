@@ -3,17 +3,26 @@ name: "my first"
 
 on: push
 
+env:
+ WORKFLOW_LEVEL: 'this value comes from the workflow level'
+
 jobs:
   first-job: 
     name: 'first job'
     runs-on: 'ubuntu-latest'
+    env:
+     JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
     steps:
     - name: say hello world1
       shell: bash
+      env:
+        STEP_LEVEL_1: 'THIS VALUE COMES FROM THE STEP LEVEL 1'
       run:
         echo "hello world from step 1"
+        echo "STEP_VALUE_1='THIS'" >> $GITHUB_ENV
     - name: say hello 2
       shell: pwsh
+      env:
+        JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
       run:
         echo "2"
-      
