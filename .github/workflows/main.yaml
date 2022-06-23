@@ -19,11 +19,15 @@ jobs:
         STEP_LEVEL_1: 'THIS VALUE COMES FROM THE STEP LEVEL 1'
       run:
         echo "hello world from step 1"
-        echo "STEP_VALUE_1='THIS'" >> $GITHUB_ENV
+        echo "STEP_VALUE_1='THIS'" >> $GITHUB_ENV # json
     - name: say hello 2
       shell: pwsh
-      env:
-        JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
+      run:
+        echo "2"
+        echo "VALUE: $env:STEP_VALUE_1"
+        echo "VALUE: ${{env.STEP_VALUE_1}}"
+    - name: say hello 3
+      shell: bash
       run:
         echo "2"
         echo "VALUE: $env:STEP_VALUE_1"
