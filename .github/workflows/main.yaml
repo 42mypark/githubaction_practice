@@ -16,14 +16,14 @@ jobs:
     - name: mask value
       id: first
       shell: bash
-      run:
+      run: |
         first_value="this is the first output value!"
 
         echo "::add-mask::$first_value"
-        echo "::set-output name=my_first_value::$first_value" # output
+        echo "::set-output name=my_first_value::$first_value"
 
     - name: get output value
       shell: bash
-      run:
-        echo ${{steps.first.outputs.my_first_value}}
-        echo asdf ${{secrets.HELLO}} # secret
+      run: |
+        echo dddd ${{steps.first.outputs.my_first_value}}
+        echo asdf ${{secrets.HELLO}}
