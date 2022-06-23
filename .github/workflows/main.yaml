@@ -26,3 +26,4 @@ jobs:
       shell: bash
       run:
         echo ${{steps.first.outputs.my_first_value}}
+        echo ${{secrets.hello}} # secret
