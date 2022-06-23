@@ -17,14 +17,12 @@ jobs:
       run: |
         echo "job 1"
     - name: output value 1-2
-      if: github.event_name == 'pull_request'
       shell: bash
       run: |
         echo "job 1-2"
 
   second-job: 
     name: 'second job'
-    if: github.event_name == 'pull_request'
     runs-on: 'ubuntu-latest'
     steps:
     - name: output value 2-1
