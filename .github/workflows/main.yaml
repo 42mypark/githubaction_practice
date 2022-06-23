@@ -13,7 +13,7 @@ jobs:
       run:
         echo "hello world from step 1"
     -name: say hello 2
-      shell: pwsh
+      shell: bash
       run:
         echo "2"
       
