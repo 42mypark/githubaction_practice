@@ -31,9 +31,10 @@ jobs:
       shell: bash
       run: |
         echo "job 2"
+
   third-job: 
     name: 'third job'
-    needs: second-job
+    needs: first-job
     runs-on: 'ubuntu-latest'
     steps:
     - name: output value 3-1
@@ -41,3 +42,14 @@ jobs:
       shell: bash
       run: |
         echo "job 3"
+
+  forth-job: 
+    name: 'forth job'
+    needs: ['second-job', 'third-job']
+    runs-on: 'ubuntu-latest'
+    steps:
+    - name: output value 4-1
+      id: forth
+      shell: bash
+      run: |
+        echo "job 4"
