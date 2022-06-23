@@ -1,7 +1,7 @@
 #name on jobs => must have
 name: "my first"
 
-on: push
+on: ['push' , 'pull_request']
 
 env:
  WORKFLOW_LEVEL: 'this value comes from the workflow level'
@@ -9,23 +9,26 @@ env:
 jobs:
   first-job: 
     name: 'first job'
-
-    strategy:
-      matrix:
-        os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
-        nodejs: ['14.x', '16.x']
-
-    runs-on: ${{matrix.os}}
-    env:
-     JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
+    runs-on: 'ubuntu-latest'
     steps:
-    - name: Setup node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{matrix.nodejs}}
-    - name: output value ${{matrix.os}}
+    - name: output value 1-1
       id: first
       shell: bash
       run: |
-        echo "OS: ${{matrix.os}}"
-        echo "node.js: ${{matrix.nodejs}}"
+        echo "job 1"
+    - name: output value 1-2
+      if: github.event_name = = 'pull_request'
+      shell: bash
+      run: |
+        echo "job 1-2"
+
+  second-job: 
+    name: 'second job'
+    if: github.event_name = = 'pull_request'
+    runs-on: 'ubuntu-latest'
+    steps:
+    - name: output value 2-1
+      id: second
+      shell: bash
+      run: |
+        echo "job 2"
