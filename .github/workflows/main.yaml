@@ -17,7 +17,7 @@ jobs:
       run: |
         echo "job 1"
     - name: output value 1-2
-      if: github.event_name = = 'pull_request'
+      if: github.event_name == 'pull_request'
       shell: bash
       run: |
         echo "job 1-2"
