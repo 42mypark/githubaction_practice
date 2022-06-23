@@ -13,22 +13,15 @@ jobs:
     env:
      JOB_LEVEL_1: 'THIS VALUE COMES FROM THE JOB LEVEL 1'
     steps:
-    - name: say hello world1
-      shell: bash
-      env:
-        STEP_LEVEL_1: 'THIS VALUE COMES FROM THE STEP LEVEL 1'
-      run:
-        echo "hello world from step 1"
-        echo "STEP_VALUE_1='THIS'" >> $GITHUB_ENV # json
-    - name: say hello 2
-      shell: pwsh
-      run:
-        echo "2"
-        echo "$env:STEP_VALUE_1"
-        echo "${{env.STEP_VALUE_1}}"
-    - name: say hello 3
+    - name: set output value
+      id: first
       shell: bash
       run:
-        echo "2"
-        echo "$env:STEP_VALUE_1"
-        echo "${{env.STEP_VALUE_1}}"
+        first_value="this is the first output value!"
+
+        echo "::set-output name=my_first_value::$first_value" # output
+
+    - name: get output value
+      shell: bash
+      run:
+        echo ${{steps.first.outputs.my_first_value}}
