@@ -1,0 +1,19 @@
+#name on jobs => must have
+name: "my first"
+
+on: push
+
+jobs:
+  first-job: 
+    name: 'first job'
+    runs-on: 'ubuntu-latest'
+    steps:
+    - name: say hello world1
+      shell: bash
+      run:
+        echo "hello world from step 1"
+    -name: say hello 2
+      shell: pwsh
+      run:
+        echo "2"
+      
