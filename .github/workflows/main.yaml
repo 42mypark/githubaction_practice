@@ -24,11 +24,11 @@ jobs:
       shell: pwsh
       run:
         echo "2"
-        echo "VALUE: $env:STEP_VALUE_1"
-        echo "VALUE: ${{env.STEP_VALUE_1}}"
+        echo "$env:STEP_VALUE_1"
+        echo "${{env.STEP_VALUE_1}}"
     - name: say hello 3
       shell: bash
       run:
         echo "2"
-        echo "VALUE: $env:STEP_VALUE_1"
-        echo "VALUE: ${{env.STEP_VALUE_1}}"
+        echo "$env:STEP_VALUE_1"
+        echo "${{env.STEP_VALUE_1}}"
