@@ -24,7 +24,7 @@ jobs:
 
   second-job: 
     name: 'second job'
-    if: github.event_name = = 'pull_request'
+    if: github.event_name == 'pull_request'
     runs-on: 'ubuntu-latest'
     steps:
     - name: output value 2-1
